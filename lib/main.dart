@@ -3,10 +3,7 @@ import 'dart:async';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:decimal/decimal.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import 'firebase_options.dart';
 
 AppMetricaConfig get _config =>
     const AppMetricaConfig("API_KEY",
@@ -17,9 +14,6 @@ AppMetricaConfig get _config =>
 Future<void> main() async {
   AppMetrica.runZoneGuarded(() {
     WidgetsFlutterBinding.ensureInitialized();
-    Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
     AppMetrica.activate(_config);
     AppMetricaPush.activate();
     runApp(const MyApp());
